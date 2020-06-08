@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 with open("README.md", "r") as readme_file:
     readme = readme_file.read()
 
-requirements = ["tensorflow>=1.15.0"]
+requirements = ["tensorflow>=1"]
 
 setup(
     name="tracepooling-layer",
