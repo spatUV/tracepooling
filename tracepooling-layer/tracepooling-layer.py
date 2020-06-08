@@ -7,7 +7,7 @@ class TraceLayer(Layer):
         self.downsample = downsample
     
     def build(self, input_shape):
-        #print(f'SHAPE: {len(input_shape)}')
+        
         if len(input_shape) == 4:
             self.filt = input_shape[2]*input_shape[3]
             self.freq = input_shape[2]
@@ -15,8 +15,7 @@ class TraceLayer(Layer):
         else:
             self.filt = input_shape[2]
         
-        #self.batches = input_shape[0]
-        #self.frames = input_shape[1]
+
         super(TraceLayer, self).build(input_shape)  # Be sure to call this at the end
 
     # Where the forward-pass operation is implemented
@@ -24,7 +23,6 @@ class TraceLayer(Layer):
     def call(self, x):
         #because when init batch value is unknown 'none'
         shape_before_pool = tf.shape(x)
-        #print(f'SHAPE LAYER: {shape_before_pool[2]} is {shape_before_pool.shape[0]>3}')
         if shape_before_pool.shape[0] > 3:
             self.batches = tf.shape(x)[0]
             self.frames = tf.shape(x)[1]
@@ -43,7 +41,7 @@ class TraceLayer(Layer):
             output_shape = [(input_shape[0], input_shape[1], input_shape[2], input_shape[3])]
         else:
             output_shape = [(input_shape[0], input_shape[1], input_shape[2])]
-        #return [(input_shape[0], int(input_shape[1]/self.downsample), int(input_shape[2]))]
+        
         return output_shape
 
     def get_config(self):
@@ -53,7 +51,6 @@ class TraceLayer(Layer):
         return config
     
     def get_trace(self, feat):
-        #npoints = tf.cast(tf.floor(self.frames/4),tf.int32)
         npoints = tf.cast(tf.floor(self.frames/self.downsample),tf.int32)
                
         aux1 = tf.slice(feat,[0, 0, 0], [self.batches, self.frames-1, self.filt])
