@@ -13,7 +13,7 @@ Installation
 ------------
 
 ```
-pip install tracepooling-layer
+pip install tracepooling
 ```
 
 
