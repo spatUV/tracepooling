@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-class TraceLayer(Layer):
+class TraceLayer(tf.keras.layers.Layer):
 
     def __init__(self, downsample, **kwargs): 
         super(TraceLayer, self).__init__(**kwargs)

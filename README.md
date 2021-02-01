@@ -22,6 +22,10 @@ Usage
 TraceLayer is implemented as a [tensorflow](https://www.tensorflow.org/) layer, so it can be added in a tensorflow model as:
 
 ```
+from tracepooling.TraceLayer import TraceLayer)
+```
+
+```
 x = TraceLayer(2)(previous_layer)
 ```
 Where the input parameter is the desired downsampling factor for the time dimension.

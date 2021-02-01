@@ -6,7 +6,7 @@ with open("README.md", "r") as readme_file:
 requirements = ["tensorflow>=1"]
 
 setup(
-    name="tracepooling-layer",
+    name="tracepooling",
     version="0.0.1",
     author="Irene Martin",
     author_email="irene.martin@uv.es",
